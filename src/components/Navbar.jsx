@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'navbar-scrolled' : 'bg-transparent'
+        mobileOpen ? 'bg-white/95 backdrop-blur-3xl shadow-sm' : (scrolled ? 'navbar-scrolled' : 'bg-transparent')
       }`}
       style={{
         paddingTop: 'env(safe-area-inset-top)',

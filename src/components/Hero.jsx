@@ -20,7 +20,7 @@ export default function Hero() {
   const scrollDown = () => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 lg:px-8 overflow-hidden">
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center pt-32 pb-20 px-6 lg:px-8 overflow-hidden">
       {/* Background grid decoration */}
       <div
         className="absolute inset-0 pointer-events-none"
