@@ -58,7 +58,7 @@ export default function Testimonials() {
   }, [])
 
   return (
-    <section id="testimonials" className="py-24 lg:py-32 px-6 lg:px-8 bg-white">
+    <section id="testimonials" className="py-24 lg:py-32 px-6 lg:px-8">
       <div ref={ref} className="max-w-6xl mx-auto">
         <div className={`text-center animate-fade-up ${isVisible ? 'visible' : ''}`}>
           <span className="font-mono text-xs font-medium text-accent uppercase tracking-widest accent-dot">

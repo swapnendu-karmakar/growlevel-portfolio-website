@@ -17,7 +17,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-ink text-white">
+    <footer className="bg-ink/95 backdrop-blur-3xl text-white border-t border-white/10 relative z-10">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
           {/* Brand */}
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
 
           {/* CTA block */}
-          <div className="glass-card bg-white/5 border-white/10 rounded-2xl p-6 max-w-sm">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 max-w-sm">
             <p className="font-display font-semibold text-base text-white mb-2">
               Ready to build something great?
             </p>

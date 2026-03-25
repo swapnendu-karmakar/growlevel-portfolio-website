@@ -60,7 +60,7 @@ export default function Portfolio() {
   }, [])
 
   return (
-    <section id="portfolio" className="py-24 lg:py-32 px-6 lg:px-8 bg-white">
+    <section id="portfolio" className="py-24 lg:py-32 px-6 lg:px-8">
       <div ref={ref} className="max-w-6xl mx-auto">
         <div className={`animate-fade-up ${isVisible ? 'visible' : ''}`}>
           <span className="font-mono text-xs font-medium text-accent uppercase tracking-widest accent-dot">

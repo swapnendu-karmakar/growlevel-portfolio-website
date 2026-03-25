@@ -21,6 +21,7 @@ export default function Contact() {
     setErrorMsg('')
 
     try {
+      // 1. Save to Supabase (Database Backup)
       const { error } = await supabase.from('contacts').insert([
         {
           name: form.name.trim(),
@@ -31,11 +32,41 @@ export default function Contact() {
 
       if (error) throw error
 
+      // 2. Send actual Email using Web3Forms
+      const emailRes = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_KEY_HERE',
+          name: form.name.trim(),
+          email: form.email.trim(),
+          message: form.message.trim(),
+          subject: form.name.trim(),
+          from_name: 'GrowLevel Website',
+        }),
+      })
+
+      const emailResult = await emailRes.json()
+      if (!emailResult.success) {
+        console.error('Email sending failed:', emailResult)
+        // If the key is missing or invalid, we throw to alert the user
+        if (emailResult.message?.toLowerCase().includes('key') || !import.meta.env.VITE_WEB3FORMS_ACCESS_KEY) {
+          throw new Error('Web3Forms Access Key is missing or invalid.')
+        }
+      }
+
       setStatus('success')
       setForm({ name: '', email: '', message: '' })
     } catch (err) {
       console.error('Contact form error:', err)
-      setErrorMsg('Something went wrong. Please try again or email us directly.')
+      setErrorMsg(
+        err.message.includes('Web3Forms')
+          ? 'Email API Key missing! The message was saved to the database, but email sending failed.'
+          : 'Something went wrong. Please try again or email us directly.'
+      )
       setStatus('error')
     }
   }
@@ -44,7 +75,7 @@ export default function Contact() {
     'w-full px-4 py-3 rounded-xl border border-surface-border bg-white font-body text-sm text-ink placeholder:text-slate-muted/60 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent/60 transition-all duration-200'
 
   return (
-    <section id="contact" className="py-24 lg:py-32 px-6 lg:px-8 section-gray">
+    <section id="contact" className="py-24 lg:py-32 px-6 lg:px-8">
       <div ref={ref} className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left */}
@@ -61,7 +92,7 @@ export default function Contact() {
             >
               Ready to grow?
               <br />
-              <span className="text-accent">Let's talk.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Let's talk.</span>
             </h2>
 
             <p
@@ -125,6 +156,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Your full name"
                     required
+                    autoComplete="name"
                     className={inputBase}
                   />
                 </div>
@@ -140,6 +172,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="you@company.com"
                     required
+                    autoComplete="email"
                     className={inputBase}
                   />
                 </div>

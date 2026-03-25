@@ -23,7 +23,7 @@ export default function About() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section id="about" className="py-24 lg:py-32 px-6 lg:px-8 bg-white">
+    <section id="about" className="py-24 lg:py-32 px-6 lg:px-8">
       <div ref={ref} className="max-w-6xl mx-auto">
         {/* Section label */}
         <div className={`animate-fade-up ${isVisible ? 'visible' : ''}`}>
@@ -42,7 +42,7 @@ export default function About() {
             >
               We don't just build websites.
               <br />
-              <span className="text-accent">We build growth engines.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-500">We build growth engines.</span>
             </h2>
           </div>
 

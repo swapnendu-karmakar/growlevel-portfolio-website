@@ -32,7 +32,7 @@ export default function Process() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section id="process" className="py-24 lg:py-32 px-6 lg:px-8 section-gray">
+    <section id="process" className="py-24 lg:py-32 px-6 lg:px-8">
       <div ref={ref} className="max-w-6xl mx-auto">
         <div className={`text-center animate-fade-up ${isVisible ? 'visible' : ''}`}>
           <span className="font-mono text-xs font-medium text-accent uppercase tracking-widest accent-dot">

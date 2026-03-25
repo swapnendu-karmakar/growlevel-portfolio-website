@@ -20,7 +20,7 @@ export default function Hero() {
   const scrollDown = () => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 lg:px-8 overflow-hidden bg-white">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 lg:px-8 overflow-hidden">
       {/* Background grid decoration */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -33,13 +33,20 @@ export default function Hero() {
         }}
       />
 
-      {/* Blue accent glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Modern Ambient Blur Glows */}
+      <div 
+        className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/15 rounded-full blur-3xl pointer-events-none animate-pulse"
+        style={{ animationDuration: '4s' }} 
+      />
+      <div 
+        className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-[80px] pointer-events-none animate-pulse"
+        style={{ animationDuration: '7s' }} 
+      />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        {/* Badge */}
+        {/* Glassmorphic Badge */}
         <div
-          className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-pale border border-accent/20 text-accent text-xs font-mono font-medium mb-8 transition-all duration-700 ${
+          className={`inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/40 backdrop-blur-md border border-white/60 shadow-sm text-ink text-xs font-mono font-medium mb-8 transition-all duration-700 hover:bg-white/60 ${
             loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
@@ -55,7 +62,7 @@ export default function Hero() {
         >
           Building Systems.
           <br />
-          <span className="text-accent">Driving Growth.</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">Driving Growth.</span>
         </h1>
 
         {/* Sub-tagline */}
@@ -81,16 +88,16 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Stats row */}
+        {/* Glassmorphic Stats row */}
         <div
-          className={`mt-16 grid grid-cols-3 gap-6 max-w-lg mx-auto transition-all duration-700 delay-500 ${
+          className={`mt-20 p-8 glass-card rounded-3xl grid grid-cols-3 gap-6 max-w-xl mx-auto transition-all duration-700 delay-500 ${
             loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <p className="font-display text-2xl sm:text-3xl font-bold text-ink">{stat.value}</p>
-              <p className="font-body text-xs text-slate-muted mt-1">{stat.label}</p>
+              <p className="font-display text-3xl sm:text-4xl font-bold text-ink">{stat.value}</p>
+              <p className="font-body text-xs text-slate-muted mt-2 uppercase tracking-wider">{stat.label}</p>
             </div>
           ))}
         </div>

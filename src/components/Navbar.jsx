@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'Work', href: '#portfolio' },
   { label: 'Process', href: '#process' },
   { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Navbar() {
@@ -80,7 +81,14 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-surface-border px-6 py-5 flex flex-col gap-4 shadow-glass">
+        <div 
+          className="md:hidden border-t border-surface-border px-6 py-6 flex flex-col gap-5 shadow-2xl relative z-50"
+          style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+          }}
+        >
           {navLinks.map((link) => (
             <a
               key={link.href}
