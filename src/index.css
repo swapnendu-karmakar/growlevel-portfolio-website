@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -150,6 +157,9 @@
 
 .animate-blob {
   animation: blob 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  transform: translateZ(0); /* Hardware acceleration */
+  backface-visibility: hidden;
 }
 
 .animation-delay-2000 {

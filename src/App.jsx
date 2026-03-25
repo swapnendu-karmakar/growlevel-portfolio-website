@@ -10,7 +10,7 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="min-h-screen font-body relative bg-[#f8f9fb]">
+    <div className="min-h-screen overflow-x-hidden font-body relative bg-[#f8f9fb]">
       {/* Global Ambient Background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-accent/15 blur-[120px] animate-blob" />
