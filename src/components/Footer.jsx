@@ -17,8 +17,15 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-ink/95 backdrop-blur-3xl text-white border-t border-white/10 relative z-10">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16">
+    <footer 
+      className="bg-ink/95 backdrop-blur-3xl text-white border-t border-white/10 relative z-10"
+      style={{
+        paddingBottom: 'env(safe-area-inset-bottom)',
+        paddingLeft: 'env(safe-area-inset-left)',
+        paddingRight: 'env(safe-area-inset-right)'
+      }}
+    >
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-16 pb-12">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
           {/* Brand */}
           <div className="max-w-xs">

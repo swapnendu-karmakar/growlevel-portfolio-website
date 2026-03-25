@@ -30,6 +30,11 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'navbar-scrolled' : 'bg-transparent'
       }`}
+      style={{
+        paddingTop: 'env(safe-area-inset-top)',
+        paddingLeft: 'env(safe-area-inset-left)',
+        paddingRight: 'env(safe-area-inset-right)'
+      }}
     >
       <nav className="max-w-6xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
