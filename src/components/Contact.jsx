@@ -56,9 +56,8 @@ export default function Contact() {
             </div>
 
             <h2
-              className={`mt-5 font-display text-4xl sm:text-5xl font-bold leading-tight text-ink animate-fade-up delay-100 ${
-                isVisible ? 'visible' : ''
-              }`}
+              className={`mt-5 font-display text-4xl sm:text-5xl font-bold leading-tight text-ink animate-fade-up delay-100 ${isVisible ? 'visible' : ''
+                }`}
             >
               Ready to grow?
               <br />
@@ -66,9 +65,8 @@ export default function Contact() {
             </h2>
 
             <p
-              className={`mt-5 font-body text-base text-slate-muted leading-relaxed animate-fade-up delay-200 ${
-                isVisible ? 'visible' : ''
-              }`}
+              className={`mt-5 font-body text-base text-slate-muted leading-relaxed animate-fade-up delay-200 ${isVisible ? 'visible' : ''
+                }`}
             >
               Tell us about your business and what you're looking to build. We'll get back to you within 24 hours with a clear plan of action.
             </p>
@@ -81,7 +79,9 @@ export default function Contact() {
                 <div className="w-9 h-9 rounded-lg bg-accent-pale flex items-center justify-center flex-shrink-0">
                   <Mail size={15} className="text-accent" />
                 </div>
-                <span className="font-body text-sm text-ink">hello@growlevel.digital</span>
+                <a href="mailto:growleveldigital@gmail.com" className="font-body text-sm text-ink hover:text-accent transition-colors">
+                  growleveldigital@gmail.com
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-lg bg-accent-pale flex items-center justify-center flex-shrink-0">

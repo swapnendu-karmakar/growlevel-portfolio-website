@@ -49,7 +49,7 @@ export default function Hero() {
 
         {/* Heading */}
         <h1
-          className={`font-display text-5xl sm:text-6xl lg:text-7xl font-800 leading-[1.05] tracking-tight text-ink mb-6 transition-all duration-700 delay-100 ${
+          className={`font-display text-5xl sm:text-6xl lg:text-7xl font-800 leading-[1.12] tracking-tight text-ink mb-6 transition-all duration-700 delay-100 ${
             loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >

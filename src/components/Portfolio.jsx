@@ -3,51 +3,6 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { supabase } from '../lib/supabase'
 import { ExternalLink, Loader2 } from 'lucide-react'
 
-const FALLBACK_PROJECTS = [
-  {
-    id: 1,
-    title: 'LaunchPad SaaS',
-    description: 'Full-stack SaaS platform with subscription billing, user dashboards, and automated onboarding flows.',
-    link: '#',
-    category: 'Web Dev',
-  },
-  {
-    id: 2,
-    title: 'RetailFlow Automation',
-    description: 'End-to-end order management automation connecting Shopify, Notion, and email into a single pipeline.',
-    link: '#',
-    category: 'Automation',
-  },
-  {
-    id: 3,
-    title: 'GreenScale CRM Setup',
-    description: 'Custom HubSpot CRM configuration for a D2C brand — complete with pipelines, sequences, and reporting.',
-    link: '#',
-    category: 'Systems',
-  },
-  {
-    id: 4,
-    title: 'Growify Landing Page',
-    description: 'High-converting landing page for a coaching brand. 3× improvement in lead capture rate post-launch.',
-    link: '#',
-    category: 'Growth',
-  },
-  {
-    id: 5,
-    title: 'TaskBridge App',
-    description: 'Internal project management tool built for a 40-person remote team, integrated with Slack and Jira.',
-    link: '#',
-    category: 'Web Dev',
-  },
-  {
-    id: 6,
-    title: 'AnalyticsPro Dashboard',
-    description: 'Custom analytics dashboard aggregating data from GA4, Meta Ads, and Google Ads into one view.',
-    link: '#',
-    category: 'Systems',
-  },
-]
-
 function ProjectCard({ project, delay }) {
   const { ref, isVisible } = useScrollAnimation(0.05)
   return (
@@ -85,21 +40,18 @@ export default function Portfolio() {
   const { ref, isVisible } = useScrollAnimation()
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
-  const [usingFallback, setUsingFallback] = useState(false)
 
   useEffect(() => {
     async function fetchProjects() {
       try {
         const { data, error } = await supabase.from('projects').select('*').order('created_at', { ascending: false })
-        if (error || !data || data.length === 0) {
-          setProjects(FALLBACK_PROJECTS)
-          setUsingFallback(true)
+        if (error || !data) {
+          setProjects([])
         } else {
           setProjects(data)
         }
       } catch {
-        setProjects(FALLBACK_PROJECTS)
-        setUsingFallback(true)
+        setProjects([])
       } finally {
         setLoading(false)
       }
@@ -124,11 +76,6 @@ export default function Portfolio() {
           >
             Projects that move the needle.
           </h2>
-          {usingFallback && (
-            <p className="font-mono text-xs text-slate-muted border border-surface-border rounded-lg px-3 py-1.5 self-start lg:self-auto">
-              Demo data — connect Supabase to load live projects
-            </p>
-          )}
         </div>
 
         {loading ? (

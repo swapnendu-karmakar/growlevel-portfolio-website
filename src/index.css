@@ -18,6 +18,11 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Syne', sans-serif;
   }
+
+  /* Fix for descending letters (g, y, p, j, q) getting cut off structurally */
+  h1, h2, h3, h4, h5, h6, .font-display, .font-body, p, span, a, button, input, textarea, label {
+    padding-bottom: 0.15em;
+  }
 }
 
 @layer utilities {

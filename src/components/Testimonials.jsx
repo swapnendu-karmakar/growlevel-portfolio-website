@@ -3,30 +3,6 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { supabase } from '../lib/supabase'
 import { Quote } from 'lucide-react'
 
-const FALLBACK_TESTIMONIALS = [
-  {
-    id: 1,
-    name: 'Arjun Mehta',
-    role: 'Founder, LaunchPad SaaS',
-    feedback:
-      'GrowLevel transformed our business. They didn\'t just build our website — they built our entire growth infrastructure. Revenue jumped 2.4× in 3 months.',
-  },
-  {
-    id: 2,
-    name: 'Priya Sharma',
-    role: 'CEO, RetailFlow',
-    feedback:
-      'The automation they set up saved us 20+ hours per week. Our team now focuses on strategy instead of spreadsheets. Absolutely worth every rupee.',
-  },
-  {
-    id: 3,
-    name: 'Karan Patel',
-    role: 'Marketing Head, GreenScale',
-    feedback:
-      'Professional, fast, and genuinely invested in results. The CRM setup they built for us changed how our entire sales team operates.',
-  },
-]
-
 function TestimonialCard({ testimonial, delay }) {
   const { ref, isVisible } = useScrollAnimation(0.05)
   return (
@@ -59,7 +35,6 @@ export default function Testimonials() {
   const { ref, isVisible } = useScrollAnimation()
   const [testimonials, setTestimonials] = useState([])
   const [loading, setLoading] = useState(true)
-  const [usingFallback, setUsingFallback] = useState(false)
 
   useEffect(() => {
     async function fetchTestimonials() {
@@ -68,15 +43,13 @@ export default function Testimonials() {
           .from('testimonials')
           .select('*')
           .order('created_at', { ascending: false })
-        if (error || !data || data.length === 0) {
-          setTestimonials(FALLBACK_TESTIMONIALS)
-          setUsingFallback(true)
+        if (error || !data) {
+          setTestimonials([])
         } else {
           setTestimonials(data)
         }
       } catch {
-        setTestimonials(FALLBACK_TESTIMONIALS)
-        setUsingFallback(true)
+        setTestimonials([])
       } finally {
         setLoading(false)
       }
@@ -99,12 +72,6 @@ export default function Testimonials() {
             Results speak louder.
           </h2>
         </div>
-
-        {!loading && usingFallback && (
-          <p className="mt-4 font-mono text-xs text-center text-slate-muted">
-            Demo testimonials — connect Supabase to load real ones
-          </p>
-        )}
 
         <div className="mt-12 grid md:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
